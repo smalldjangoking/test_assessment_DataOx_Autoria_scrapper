@@ -38,10 +38,11 @@ Follow these steps to get the project up and running:
     ```
 
 ---
-
 ### ⚙️ How It Works
-** Scraps the first page of cars to collect URLs.
-** Scraps each URL and extracts the following fields:
+
+**Scraps the first page of cars to collect URLs.**
+
+**Scraps each URL and extracts the following fields:**
 - url (string)
 - title
 - price_usd
@@ -52,20 +53,24 @@ Follow these steps to get the project up and running:
 - images_count
 - car_number
 - car_vin
-- 
-** After scraping, all fields are validated and normalized using **Pydantic**
-** If the data matches the requirements, it is added to the database  
-   If the record already exists, it is skipped
+
+**After scraping, all fields are validated and normalized using Pydantic.**
+
+**If the data matches the requirements, it is added to the database.**  
+If the record already exists, it is skipped.
+
+---
 
 * **Initial Run**  
-  Immediately after the containers start, the `app` service performs an initial "test" scraping run to populate the database and verify dump functionality
+  Immediately after the containers start, the `app` service performs an initial "test" scraping run to populate the database and verify dump functionality.
 
 * **Automated Scheduling**  
-  After the initial run, the **Ofelia** scheduler takes over and triggers the scraper daily at exactly **12:00 PM**
+  After the initial run, the **Ofelia** scheduler takes over and triggers the scraper daily at exactly **12:00 PM**.
 
 * **Data Persistence**
-  * Collected data is stored in a **PostgreSQL** database
-  * Database backup files (`.sql`) are automatically generated and saved to the `./dumps` directory
+  * Collected data is stored in a **PostgreSQL** database.
+  * Database backup files (`.sql`) are automatically generated and saved to the `./dumps` directory.
+
 
 ---
 
