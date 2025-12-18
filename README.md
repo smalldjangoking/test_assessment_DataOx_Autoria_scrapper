@@ -1,6 +1,7 @@
 # 🚗 AutoRia Scraper & Scheduler
 
-Data collection system for the AutoRia platform. This project includes, PostgreSQL integration, Playwright, automated daily database backups, and containerized scheduling.
+Data collection system for the AutoRia platform.
+This project includes PostgreSQL integration, Playwright-based web scraping, Pydantic for data validation and normalization, automated daily database backups, and containerized scheduling.
 
 ---
 
@@ -39,12 +40,32 @@ Follow these steps to get the project up and running:
 ---
 
 ### ⚙️ How It Works
+** Scraps the first page of cars to collect URLs.
+** Scraps each URL and extracts the following fields:
+- url (string)
+- title
+- price_usd
+- odometer
+- username (string)
+- phone_number
+- image_url
+- images_count
+- car_number
+- car_vin
+- 
+** After scraping, all fields are validated and normalized using **Pydantic**
+** If the data matches the requirements, it is added to the database  
+   If the record already exists, it is skipped
 
-* **Initial Run**: Immediately after the containers start, the `app` service will perform a first "test" scraping run to populate the database and verify the dump functionality.
-* **Automated Scheduling**: After the first run, the **Ofelia** scheduler takes over. It is configured to trigger the scraper daily at exactly **12:00 PM**, strictly following the project requirements.
-* **Data Persistence**: 
-    * Collected data is stored in a **PostgreSQL** database.
-    * Database backup files (.sql) are automatically generated and saved to the `./dumps` directory in the project root.
+* **Initial Run**  
+  Immediately after the containers start, the `app` service performs an initial "test" scraping run to populate the database and verify dump functionality
+
+* **Automated Scheduling**  
+  After the initial run, the **Ofelia** scheduler takes over and triggers the scraper daily at exactly **12:00 PM**
+
+* **Data Persistence**
+  * Collected data is stored in a **PostgreSQL** database
+  * Database backup files (`.sql`) are automatically generated and saved to the `./dumps` directory
 
 ---
 
