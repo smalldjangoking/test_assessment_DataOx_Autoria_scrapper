@@ -1,0 +1,53 @@
+services:
+  db:
+    image: postgres:16
+    container_name: auto_ria_db
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: auto_ria_app
+    restart: "no"
+    volumes:
+      - .:/app
+      - ./dumps:/app/dumps
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+  scheduler:
+    image: mcuadros/ofelia:latest
+    container_name: auto_ria_scheduler
+    restart: always
+    command: daemon --docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - TZ=Europe/Kyiv
+    labels:
+      ofelia.enabled: "true"
+      ofelia.job-run.test-run.schedule: "0 0 */12 * * *"
+      #ofelia.job-run.test-run.schedule: "0 */15 * * * *" for 15 min delay
+      ofelia.job-run.test-run.container: "auto_ria_app"
+      ofelia.job-run.test-run.discard-stdout: "true"
+
+
+volumes:
+  db_data:
