@@ -19,7 +19,7 @@ Follow these steps to get the project up and running:
 
 1.  **Clone the Repository**:
     ```bash
-    git clone [https://github.com/smalldjangoking/test_assessment_DataOx_Autoria_scrapper.git](https://github.com/smalldjangoking/test_assessment_DataOx_Autoria_scrapper.git)
+    git clone https://github.com/smalldjangoking/test_assessment_DataOx_Autoria_scrapper.git
     cd test_assessment_DataOx_Autoria_scrapper
     ```
 
