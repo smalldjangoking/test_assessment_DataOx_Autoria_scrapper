@@ -8,7 +8,7 @@ This project includes PostgreSQL integration, Playwright-based web scraping, Pyd
 ### ⚠️ Important Notes (Read First!)
 
 * **Ukrainian IP**: To ensure stable operation and avoid access restrictions, it is highly recommended to use a clean **Ukrainian IP address**.
-* **Scheduling**: Cron task intervals are managed in the `compose.yaml` file. You can easily switch to a test frequency (every 15 minutes) by following the comments in the `labels` section of the scheduler service.
+* **Scheduling**: Ofelia scheduler intervals are managed in the `compose.yaml` file. You can easily switch to a test frequency (every 15 minutes) by following the comments in the `labels` section of the scheduler service.
 * **Local Execution**: If you intend to run the script outside of Docker, ensure you have the `postgresql-client` package installed on your system so the `make_db_dump()` function can access `pg_dump`. Otherwise, simply comment out the dump function call in `main.py`.
 
 ---
