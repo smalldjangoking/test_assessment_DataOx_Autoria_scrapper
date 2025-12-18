@@ -43,11 +43,11 @@ Follow these steps to get the project up and running:
 **Scraps the first page of cars to collect URLs.**
 
 **Scraps each URL and extracts the following fields:**
-- url (string)
+- url
 - title
 - price_usd
 - odometer
-- username (string)
+- username
 - phone_number
 - image_url
 - images_count
