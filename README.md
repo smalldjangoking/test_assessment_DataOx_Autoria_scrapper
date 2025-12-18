@@ -32,6 +32,8 @@ Follow these steps to get the project up and running:
     DB_PORT=5432
     ```
 
+    If you change `DB_HOST` or `DB_PORT`, make sure they match the values defined in `compose.yaml`.
+
 3.  **Launch via Docker**: Execute the following command in your terminal:
     ```bash
     docker compose up -d --build
