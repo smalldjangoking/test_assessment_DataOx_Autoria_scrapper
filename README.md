@@ -27,7 +27,7 @@ Follow these steps to get the project up and running:
     ```env
     DB_USER=your_user
     DB_PASSWORD=your_password
-    DB_NAME=autoria
+    DB_NAME=your_db_name
     DB_HOST=auto_ria_db
     DB_PORT=5432
     ```
@@ -72,6 +72,7 @@ If the record already exists, it is skipped.
 * **Data Persistence**
   * Collected data is stored in a **PostgreSQL** database.
   * Database backup files (`.sql`) are automatically generated and saved to the `./dumps` directory.
+  * During Docker process, two dump files are created: one inside the Docker Compose environment and another in the project’s local `dumps` folder.
 
 
 ---
