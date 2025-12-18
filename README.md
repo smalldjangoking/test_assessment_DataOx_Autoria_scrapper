@@ -1,6 +1,6 @@
 # 🚗 AutoRia Scraper & Scheduler
 
-A high-performance automated data collection system for the AutoRia platform. This project features asynchronous-ready scraping, PostgreSQL integration, automated daily database backups, and containerized scheduling.
+Data collection system for the AutoRia platform. This project includes, PostgreSQL integration, Playwright, automated daily database backups, and containerized scheduling.
 
 ---
 
@@ -50,7 +50,7 @@ Follow these steps to get the project up and running:
 
 ### 📂 Project Structure
 
-* `/app` – Main scraper logic powered by Playwright.
+* `/app` – Main scraper logic powered by playwright.
 * `/database` – SQLAlchemy models and database connection setup.
 * `/dumps` – Storage directory for automated database backups.
 * `compose.yaml` – Orchestration for the App, Database, and Scheduler services.
