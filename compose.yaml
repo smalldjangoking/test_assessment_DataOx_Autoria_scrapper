@@ -43,7 +43,7 @@ services:
       - TZ=Europe/Kyiv
     labels:
       ofelia.enabled: "true"
-      ofelia.job-run.test-run.schedule: "0 0 */12 * * *"
+      ofelia.job-run.test-run.schedule: "0 0 12 * * *"
       #ofelia.job-run.test-run.schedule: "0 */15 * * * *" for 15 min delay
       ofelia.job-run.test-run.container: "auto_ria_app"
       ofelia.job-run.test-run.discard-stdout: "true"
